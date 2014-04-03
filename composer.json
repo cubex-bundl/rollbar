@@ -1,0 +1,25 @@
+{
+  "name":              "bundl/rollbar",
+  "description":       "Cubex Bundle : rollbar",
+  "version":           "0.0.1",
+  "keywords":          ["rollbar", "cubex"],
+  "homepage":          "http://cubex.io/bundl/sidekix",
+  "minimum-stability": "dev",
+  "license":           "BSD-3-Clause",
+  "authors":           [
+    {
+      "name":     "Tom Kay",
+      "email":    "tom.kay@justdevelop.it",
+      "role":     "Developer"
+    }
+  ],
+  "require":           {
+    "php":             ">=5.4.0",
+    "rollbar/rollbar": "dev-master"
+  },
+  "autoload":          {
+    "psr-0": {
+      "Bundl\\Rollbar\\": "src/"
+    }
+  }
+}
