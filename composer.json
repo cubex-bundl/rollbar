@@ -8,14 +8,17 @@
   "license":           "BSD-3-Clause",
   "authors":           [
     {
-      "name":     "Tom Kay",
-      "email":    "tom.kay@justdevelop.it",
-      "role":     "Developer"
+      "name":  "Tom Kay",
+      "email": "tom.kay@justdevelop.it",
+      "role":  "Developer"
     }
   ],
   "require":           {
     "php":             ">=5.4.0",
     "rollbar/rollbar": "dev-master"
+  },
+  "suggest":           {
+    "bundl/sidekix": "Provides version information to Rollbar"
   },
   "autoload":          {
     "psr-0": {

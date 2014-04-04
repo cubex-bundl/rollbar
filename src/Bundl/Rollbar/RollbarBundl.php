@@ -8,6 +8,7 @@
 
 namespace Bundl\Rollbar;
 
+use Bundl\Sidekix\SidekixBundl;
 use Cubex\Bundle\Bundle;
 use Cubex\Events\EventManager;
 use Cubex\Events\IEvent;
@@ -26,8 +27,22 @@ class RollbarBundl extends Bundle
     $token           = $config->getStr("post_server_item", null);
     $this->_logLevel = $config->getStr("log_level", LogLevel::WARNING);
 
+    $config = [
+      'access_token' => $token,
+      'environment'  => CUBEX_ENV,
+      'root'         => CUBEX_PROJECT_ROOT
+    ];
+
+    if(class_exists('\Bundl\Sidekix\SidekixBundl'))
+    {
+      $info = SidekixBundl::getDiffuseVersionInfo();
+      if($info && isset($info['version']))
+      {
+        $config['code_version'] = $info['version'];
+      }
+    }
     // installs global error and exception handlers
-    \Rollbar::init(array('access_token' => $token));
+    \Rollbar::init($config);
 
     EventManager::listen(
       EventManager::CUBEX_LOG,
