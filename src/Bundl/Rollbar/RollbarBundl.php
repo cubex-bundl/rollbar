@@ -63,7 +63,16 @@ class RollbarBundl extends Bundle
           $level = 'info';
           break;
       }
-      \Rollbar::report_message($e->getStr('message'), $level);
+      $data = [
+        'file'    => $e->getStr('file'),
+        'line'    => $e->getStr('line'),
+        'context' => $e->getArr('context'),
+      ];
+      if(CUBEX_CLI)
+      {
+        $data['cli_command'] = implode(' ', $_SERVER['argv']);
+      }
+      \Rollbar::report_message($e->getStr('message'), $level, $data);
     }
   }
 }
