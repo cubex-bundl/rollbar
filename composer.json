@@ -15,7 +15,7 @@
   ],
   "require":           {
     "php":             ">=5.4.0",
-    "rollbar/rollbar": "dev-master"
+    "rollbar/rollbar": "~0.18.2"
   },
   "suggest":           {
     "bundl/sidekix": "Provides version information to Rollbar"
